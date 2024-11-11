@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33C2C13B2CD87B100041A542 /* BrandSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2C13A2CD87AFC0041A542 /* BrandSelectionView.swift */; };
+		33C2C13D2CD87C240041A542 /* ModelSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2C13C2CD87C220041A542 /* ModelSelectionView.swift */; };
+		33C2C13F2CD87EB90041A542 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2C13E2CD87EB70041A542 /* CheckoutView.swift */; };
+		33C2C1412CD87EE70041A542 /* CustomerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2C1402CD87EE50041A542 /* CustomerInfoView.swift */; };
+		33C2C1432CD87F150041A542 /* PaymentOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2C1422CD87F060041A542 /* PaymentOptionsView.swift */; };
+		33C2C1452CD87F670041A542 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2C1442CD87F640041A542 /* ConfirmationView.swift */; };
 		8ED68C092CD43D4B00EAA447 /* MAPD714_002_TeamProject_Team10App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED68C082CD43D4B00EAA447 /* MAPD714_002_TeamProject_Team10App.swift */; };
 		8ED68C0B2CD43D4B00EAA447 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED68C0A2CD43D4B00EAA447 /* ContentView.swift */; };
 		8ED68C0D2CD43D4F00EAA447 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED68C0C2CD43D4F00EAA447 /* Assets.xcassets */; };
@@ -34,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33C2C13A2CD87AFC0041A542 /* BrandSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandSelectionView.swift; sourceTree = "<group>"; };
+		33C2C13C2CD87C220041A542 /* ModelSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectionView.swift; sourceTree = "<group>"; };
+		33C2C13E2CD87EB70041A542 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		33C2C1402CD87EE50041A542 /* CustomerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerInfoView.swift; sourceTree = "<group>"; };
+		33C2C1422CD87F060041A542 /* PaymentOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionsView.swift; sourceTree = "<group>"; };
+		33C2C1442CD87F640041A542 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		8ED68C052CD43D4B00EAA447 /* MAPD714-002_TeamProject_Team10.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAPD714-002_TeamProject_Team10.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED68C082CD43D4B00EAA447 /* MAPD714_002_TeamProject_Team10App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAPD714_002_TeamProject_Team10App.swift; sourceTree = "<group>"; };
 		8ED68C0A2CD43D4B00EAA447 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +106,12 @@
 		8ED68C072CD43D4B00EAA447 /* MAPD714-002_TeamProject_Team10 */ = {
 			isa = PBXGroup;
 			children = (
+				33C2C1442CD87F640041A542 /* ConfirmationView.swift */,
+				33C2C1422CD87F060041A542 /* PaymentOptionsView.swift */,
+				33C2C1402CD87EE50041A542 /* CustomerInfoView.swift */,
+				33C2C13E2CD87EB70041A542 /* CheckoutView.swift */,
+				33C2C13C2CD87C220041A542 /* ModelSelectionView.swift */,
+				33C2C13A2CD87AFC0041A542 /* BrandSelectionView.swift */,
 				8ED68C082CD43D4B00EAA447 /* MAPD714_002_TeamProject_Team10App.swift */,
 				8ED68C0A2CD43D4B00EAA447 /* ContentView.swift */,
 				8ED68C0C2CD43D4F00EAA447 /* Assets.xcassets */,
@@ -191,7 +209,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					8ED68C042CD43D4B00EAA447 = {
 						CreatedOnToolsVersion = 15.4;
@@ -257,7 +275,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33C2C1412CD87EE70041A542 /* CustomerInfoView.swift in Sources */,
 				8ED68C0B2CD43D4B00EAA447 /* ContentView.swift in Sources */,
+				33C2C1432CD87F150041A542 /* PaymentOptionsView.swift in Sources */,
+				33C2C13D2CD87C240041A542 /* ModelSelectionView.swift in Sources */,
+				33C2C13F2CD87EB90041A542 /* CheckoutView.swift in Sources */,
+				33C2C1452CD87F670041A542 /* ConfirmationView.swift in Sources */,
+				33C2C13B2CD87B100041A542 /* BrandSelectionView.swift in Sources */,
 				8ED68C092CD43D4B00EAA447 /* MAPD714_002_TeamProject_Team10App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,7 +497,6 @@
 		8ED68C2D2CD43D5000EAA447 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -492,7 +515,6 @@
 		8ED68C2E2CD43D5000EAA447 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -511,7 +533,6 @@
 		8ED68C302CD43D5000EAA447 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -528,7 +549,6 @@
 		8ED68C312CD43D5000EAA447 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
