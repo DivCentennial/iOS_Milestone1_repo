@@ -1,5 +1,5 @@
 //Checkout screen where user's selection is displayed
-// ....
+// ...
 import SwiftUI
 
 struct CheckoutView: View {
