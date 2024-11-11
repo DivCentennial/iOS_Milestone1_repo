@@ -2,9 +2,8 @@
 //  PaymentOptionsView.swift
 //  MAPD714-002_TeamProject_Team10
 //
-//  Created by Divyanshoo Sinha on 2024-11-03.
+//  Created by Divyanshoo Sinha and Kashish Yadav on 2024-11-03.
 // User selects payment method
-// ....
 import SwiftUI
 
 struct PaymentOptionsView: View {

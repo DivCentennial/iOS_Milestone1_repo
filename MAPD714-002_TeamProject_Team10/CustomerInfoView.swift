@@ -2,9 +2,9 @@
 //  CustomerInfoView.swift
 //  MAPD714-002_TeamProject_Team10
 //
-//  Created by Divyanshoo Sinha on 2024-11-03.
+//  Created by Divyanshoo Sinha and Kashish Yadav on 2024-11-03.
 //  Customer can input their personal data.
-//// ....
+///
 import SwiftUI
 
 struct CustomerInfoView: View {
