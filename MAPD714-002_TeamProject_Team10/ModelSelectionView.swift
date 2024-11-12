@@ -1,3 +1,13 @@
+
+//
+//  ModelSelectionView.swift
+//  MAPD714-002_TeamProject_Team10
+//
+//  Created by Divyanshoo Sinha and Kashish Yadav on 2024-11-03.
+//
+//This is where user selects brand.
+// Description: User can select model based on the selected brand
+
 import SwiftUI
 
 struct ModelSelectionView: View {
@@ -6,19 +16,19 @@ struct ModelSelectionView: View {
     @State private var selectedStorage = "64 GB"
     @State private var selectedColor = "Blue"
     @State private var selectedCarrier = "Bell"
-    
+    //Array of models
     let models = [
         "iPhone": ["iPhone 14", "iPhone 15", "iPhone 15 Pro", "iPhone 15 Pro Max"],
         "Samsung": ["Galaxy S23", "Galaxy Z Fold 5", "Galaxy Z Fold 6", "Galaxy S23 Ultra"],
         "Google Pixel": ["Google Pixel 9", "Google Pixel 9 Pro", "Google Pixel 8", "Google Pixel 8 Pro"]
     ]
-    
+    //Array of proces
     let prices = [
         "iPhone 14": "$799", "iPhone 15": "$899", "iPhone 15 Pro": "$999", "iPhone 15 Pro Max": "$1099",
         "Galaxy S23": "$849", "Galaxy Z Fold 5": "$1799", "Galaxy Z Fold 6": "$1899", "Galaxy S23 Ultra": "$1199",
         "Google Pixel 9": "$699", "Google Pixel 9 Pro": "$899", "Google Pixel 8": "$599", "Google Pixel 8 Pro": "$799"
     ]
-    
+    // Array of features
     let storages = ["64 GB", "128 GB", "256 GB"]
     let colors = ["Blue", "Black", "Silver"]
     let carriers = ["Bell", "Rogers", "Telus"]

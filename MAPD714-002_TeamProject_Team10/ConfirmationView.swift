@@ -3,7 +3,7 @@
 //  MAPD714-002_TeamProject_Team10
 //
 //  Created by Divyanshoo Sinha and Kashish Yadav on 2024-11-03.
-// User looks at the phone details b4 checkout
+// User looks at the phone details and the inputted details in the end.
 //
 import SwiftUI
 

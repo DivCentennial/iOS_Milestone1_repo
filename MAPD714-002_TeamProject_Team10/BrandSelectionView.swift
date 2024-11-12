@@ -5,7 +5,7 @@
 //  Created by Divyanshoo Sinha and Kashish Yadav on 2024-11-03.
 //
 //This is where user selects brand.
-// ....
+// Description: User may select the desired brand among apple samsung & //google pixel
 import SwiftUI
 
 struct BrandSelectionView: View {
