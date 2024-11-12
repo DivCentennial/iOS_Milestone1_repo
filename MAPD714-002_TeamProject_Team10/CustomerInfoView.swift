@@ -23,16 +23,26 @@ struct CustomerInfoView: View {
 
     var body: some View {
         VStack {
+            
             Form {
-                Section(header: Text("Customer Information")) {
+                Section(header: Text("Customer Information"))
+                {
                     TextField("Full Name", text: $fullName)
+                       
                     TextField("Street Address", text: $address)
+                       
                     TextField("City", text: $city)
+                      
                     TextField("Postal Code", text: $postalCode)
+                       
                     TextField("Phone Number", text: $phoneNumber)
+                      
                     TextField("Email Address", text: $emailAddress)
+                       
                 }
             }
+            .padding(.top, 40)
+            .background(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))) // Custom background color (#BF387D)
 
             NavigationLink(destination: PaymentOptionsView(
                 brand: brand,
@@ -47,13 +57,25 @@ struct CustomerInfoView: View {
                 // Removed phoneNumber and emailAddress as parameters
             )) {
                 Text("Proceed to Payment")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
+                    .frame(width: 200, height: 50)
+                    .background(Color.white)
+                    .foregroundColor(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))) // Sets text color to #BF387D
                     .cornerRadius(8)
+                    .padding(.top, 20) // Padding for button
             }
             .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))) // Custom background color (#BF387D)
+            .edgesIgnoringSafeArea(.all) // Extend background to edges
         }
+    }
+}
+// Preview for CustomerInfoView
+struct CustomerInfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        // Providing example data for the preview
+        CustomerInfoView(brand: "iPhone", model: "iPhone 14", price: "$799", storage: "128 GB", color: "Blue")
+            .previewDevice("iPhone 14") // You can specify the device here
+            .navigationBarTitle("Customer Info", displayMode: .inline)
     }
 }

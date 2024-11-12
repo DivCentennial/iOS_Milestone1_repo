@@ -1,6 +1,6 @@
 //User can select the models.
 //  Created by Divyanshoo Sinha and Kashish Yadav on 2024-11-03.
-// ....// ....
+//
 import SwiftUI
 
 struct ModelSelectionView: View {
@@ -37,7 +37,7 @@ struct ModelSelectionView: View {
                 if let price = prices[selectedModel] {
                     Text("Price: \(price)")
                         .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.blue)
                 }
             }
             Section(header: Text("Select Storage")) {
@@ -72,12 +72,24 @@ struct ModelSelectionView: View {
             )) {
                 Text("Checkout")
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(.white)
-                    .background(Color.green)
+                    .foregroundColor(.black)
+//                    .background(Color.green)
                     .cornerRadius(8)
             }
             .disabled(selectedModel.isEmpty) // Disable if no model is selected
         }
+        
+        
     }
 }
 
+
+// Preview for ModelSelectionView
+struct ModelSelectionView_Previews: PreviewProvider {
+    static var previews: some View {
+        // Preview with a sample brand, here it's "iPhone"
+        ModelSelectionView(selectedBrand: "iPhone")
+            .previewDevice("iPhone 14") // You can specify the device here
+            .navigationBarTitle("Select Model", displayMode: .inline)
+    }
+}

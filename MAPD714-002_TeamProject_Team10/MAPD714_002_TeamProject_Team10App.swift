@@ -12,6 +12,7 @@ struct MAPD714_002_TeamProject_Team10App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .accentColor(.white)
         }
     }
 }
