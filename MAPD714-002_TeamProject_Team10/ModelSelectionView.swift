@@ -1,6 +1,3 @@
-//User can select the models.
-//  Created by Divyanshoo Sinha and Kashish Yadav on 2024-11-03.
-//
 import SwiftUI
 
 struct ModelSelectionView: View {
@@ -27,62 +24,72 @@ struct ModelSelectionView: View {
     let carriers = ["Bell", "Rogers", "Telus"]
     
     var body: some View {
-        Form {
-            Section(header: Text("Select Model")) {
-                Picker("Model", selection: $selectedModel) {
-                    ForEach(models[selectedBrand] ?? [], id: \.self) {
-                        Text($0)
-                    }
-                }
-                if let price = prices[selectedModel] {
-                    Text("Price: \(price)")
-                        .font(.subheadline)
-                        .foregroundColor(.blue)
-                }
-            }
-            Section(header: Text("Select Storage")) {
-                Picker("Storage", selection: $selectedStorage) {
-                    ForEach(storages, id: \.self) {
-                        Text($0)
-                    }
-                }
-            }
-            Section(header: Text("Select Color")) {
-                Picker("Color", selection: $selectedColor) {
-                    ForEach(colors, id: \.self) {
-                        Text($0)
-                    }
-                }
-            }
-            Section(header: Text("Select Carrier")) {
-                Picker("Carrier", selection: $selectedCarrier) {
-                    ForEach(carriers, id: \.self) {
-                        Text($0)
-                    }
-                }
-            }
+        ZStack {
+            // Custom background color
+            Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))
+                .edgesIgnoringSafeArea(.all) // Extends the background to cover the entire screen
             
-            NavigationLink(destination: CheckoutView(
-                brand: selectedBrand,
-                model: selectedModel,
-                price: prices[selectedModel] ?? "N/A",
-                storage: selectedStorage,
-                color: selectedColor,
-                carrier: selectedCarrier
-            )) {
-                Text("Checkout")
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.black)
-//                    .background(Color.green)
-                    .cornerRadius(8)
+            VStack {
+                // Form with limited height
+                Form {
+                    Section(header: Text("Select Model")) {
+                        Picker("Model", selection: $selectedModel) {
+                            ForEach(models[selectedBrand] ?? [], id: \.self) {
+                                Text($0)
+                            }
+                        }
+                        if let price = prices[selectedModel] {
+                            Text("Price: \(price)")
+                                .font(.subheadline)
+                                .foregroundColor(.blue)
+                        }
+                    }
+                    Section(header: Text("Select Storage")) {
+                        Picker("Storage", selection: $selectedStorage) {
+                            ForEach(storages, id: \.self) {
+                                Text($0)
+                            }
+                        }
+                    }
+                    Section(header: Text("Select Color")) {
+                        Picker("Color", selection: $selectedColor) {
+                            ForEach(colors, id: \.self) {
+                                Text($0)
+                            }
+                        }
+                    }
+                    Section(header: Text("Select Carrier")) {
+                        Picker("Carrier", selection: $selectedCarrier) {
+                            ForEach(carriers, id: \.self) {
+                                Text($0)
+                            }
+                        }
+                    }
+                }
+                .frame(maxHeight: 450) // Limiting the height of the Form
+                
+                // Checkout button outside the Form
+                NavigationLink(destination: CheckoutView(
+                    brand: selectedBrand,
+                    model: selectedModel,
+                    price: prices[selectedModel] ?? "N/A",
+                    storage: selectedStorage,
+                    color: selectedColor,
+                    carrier: selectedCarrier
+                )) {
+                    Text("Checkout")
+                        .frame(width: 200, height: 50)  // Fixed width and height
+                        .background(Color.white)         // White background
+                        .foregroundColor(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))) // Custom text color
+                        .cornerRadius(8)                 // Rounded corners
+                        .padding(.top, 20)               // Padding for spacing
+                }
+                .disabled(selectedModel.isEmpty)  // Disable if no model is selected
+                .padding() // Optional: reduce bottom padding if needed
             }
-            .disabled(selectedModel.isEmpty) // Disable if no model is selected
         }
-        
-        
     }
 }
-
 
 // Preview for ModelSelectionView
 struct ModelSelectionView_Previews: PreviewProvider {
