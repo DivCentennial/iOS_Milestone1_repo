@@ -13,6 +13,10 @@
 		33C2C1412CD87EE70041A542 /* CustomerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2C1402CD87EE50041A542 /* CustomerInfoView.swift */; };
 		33C2C1432CD87F150041A542 /* PaymentOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2C1422CD87F060041A542 /* PaymentOptionsView.swift */; };
 		33C2C1452CD87F670041A542 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2C1442CD87F640041A542 /* ConfirmationView.swift */; };
+		8E77898E2CF4FDB200D01139 /* LoginModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E77898C2CF4FDB200D01139 /* LoginModel.xcdatamodeld */; };
+		8E7789902CF4FE0C00D01139 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E77898F2CF4FE0C00D01139 /* PersistenceController.swift */; };
+		8E7789922CF4FFDD00D01139 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7789912CF4FFDD00D01139 /* LoginView.swift */; };
+		8E77899C2CF5109B00D01139 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E77899B2CF5109B00D01139 /* RegisterView.swift */; };
 		8ED68C092CD43D4B00EAA447 /* MAPD714_002_TeamProject_Team10App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED68C082CD43D4B00EAA447 /* MAPD714_002_TeamProject_Team10App.swift */; };
 		8ED68C0B2CD43D4B00EAA447 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED68C0A2CD43D4B00EAA447 /* ContentView.swift */; };
 		8ED68C0D2CD43D4F00EAA447 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED68C0C2CD43D4F00EAA447 /* Assets.xcassets */; };
@@ -46,6 +50,10 @@
 		33C2C1402CD87EE50041A542 /* CustomerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerInfoView.swift; sourceTree = "<group>"; };
 		33C2C1422CD87F060041A542 /* PaymentOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionsView.swift; sourceTree = "<group>"; };
 		33C2C1442CD87F640041A542 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
+		8E77898D2CF4FDB200D01139 /* LoginModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LoginModel.xcdatamodel; sourceTree = "<group>"; };
+		8E77898F2CF4FE0C00D01139 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		8E7789912CF4FFDD00D01139 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8E77899B2CF5109B00D01139 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		8ED68C052CD43D4B00EAA447 /* MAPD714-002_TeamProject_Team10.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAPD714-002_TeamProject_Team10.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED68C082CD43D4B00EAA447 /* MAPD714_002_TeamProject_Team10App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAPD714_002_TeamProject_Team10App.swift; sourceTree = "<group>"; };
 		8ED68C0A2CD43D4B00EAA447 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,6 +124,10 @@
 				8ED68C0A2CD43D4B00EAA447 /* ContentView.swift */,
 				8ED68C0C2CD43D4F00EAA447 /* Assets.xcassets */,
 				8ED68C0E2CD43D4F00EAA447 /* Preview Content */,
+				8E77898C2CF4FDB200D01139 /* LoginModel.xcdatamodeld */,
+				8E77898F2CF4FE0C00D01139 /* PersistenceController.swift */,
+				8E7789912CF4FFDD00D01139 /* LoginView.swift */,
+				8E77899B2CF5109B00D01139 /* RegisterView.swift */,
 			);
 			path = "MAPD714-002_TeamProject_Team10";
 			sourceTree = "<group>";
@@ -280,9 +292,13 @@
 				33C2C1432CD87F150041A542 /* PaymentOptionsView.swift in Sources */,
 				33C2C13D2CD87C240041A542 /* ModelSelectionView.swift in Sources */,
 				33C2C13F2CD87EB90041A542 /* CheckoutView.swift in Sources */,
+				8E77898E2CF4FDB200D01139 /* LoginModel.xcdatamodeld in Sources */,
 				33C2C1452CD87F670041A542 /* ConfirmationView.swift in Sources */,
 				33C2C13B2CD87B100041A542 /* BrandSelectionView.swift in Sources */,
+				8E7789922CF4FFDD00D01139 /* LoginView.swift in Sources */,
+				8E77899C2CF5109B00D01139 /* RegisterView.swift in Sources */,
 				8ED68C092CD43D4B00EAA447 /* MAPD714_002_TeamProject_Team10App.swift in Sources */,
+				8E7789902CF4FE0C00D01139 /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +618,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8E77898C2CF4FDB200D01139 /* LoginModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8E77898D2CF4FDB200D01139 /* LoginModel.xcdatamodel */,
+			);
+			currentVersion = 8E77898D2CF4FDB200D01139 /* LoginModel.xcdatamodel */;
+			path = LoginModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8ED68BFD2CD43D4B00EAA447 /* Project object */;
 }
