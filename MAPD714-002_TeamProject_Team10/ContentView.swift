@@ -18,18 +18,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.phoneContext) private var phoneContext // Access PhoneModel context
     @State private var isLoggedIn = false
 
     var body: some View {
         NavigationView {
             if isLoggedIn {
                 BrandSelectionView()
+                    .environment(\.phoneContext, phoneContext) // Inject phoneContext to child views
             } else {
                 LoginView(isLoggedIn: $isLoggedIn) // Pass the binding to LoginView
             }
         }
     }
 }
+
 
 
 //import SwiftUI

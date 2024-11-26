@@ -22,11 +22,22 @@ struct PaymentOptionsView: View {
     let customerName: String
     let address: String
     let city: String
-    let postalCode: String
-
+    
+    // Fetch AppUser from Core Data
+       @FetchRequest(
+           entity: AppUser.entity(),
+           sortDescriptors: [NSSortDescriptor(keyPath: \AppUser.fullname, ascending: true)],
+           predicate: nil,
+           animation: .default
+       ) var appUsers: FetchedResults<AppUser>
+    
+    // Extract user data (assuming only one user is present in Core Data)
+       var appUser: AppUser? {
+           return appUsers.first
+       }
+    
     var body: some View {
         ZStack {
-            // Set the background color for the entire screen
             Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))
                 .ignoresSafeArea()
 
@@ -35,8 +46,8 @@ struct PaymentOptionsView: View {
                     .foregroundColor(.white)
                     .font(.headline)
                     .padding(.top, 20)
-                    .padding(.leading, 26) // Add left padding
-                
+                    .padding(.leading, 26)
+
                 Picker("Payment Method", selection: $selectedPaymentMethod) {
                     Text("Credit Card").tag("Credit Card")
                     Text("Debit Card").tag("Debit Card")
@@ -46,36 +57,32 @@ struct PaymentOptionsView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal)
                 .onAppear {
-                               // Apply the custom color once the view appears
-                               UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(red: 158/255, green: 47/255, blue: 102/255, alpha: 1.0)
-                               UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-                               UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-                           }
-                
+                    UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(red: 158/255, green: 47/255, blue: 102/255, alpha: 1.0)
+                    UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+                    UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+                }
+
                 if selectedPaymentMethod == "Credit Card" || selectedPaymentMethod == "Debit Card" {
                     VStack(alignment: .leading, spacing: 15) {
                         Text("Card Information")
-                            
                             .foregroundColor(.white)
                             .font(.headline)
                         
                         TextField("Card Number", text: $cardNumber)
-                            .accentColor(.white) // Cursor color
+                            .accentColor(.white)
                             .foregroundColor(.white)
                             .keyboardType(.numberPad)
                             .padding()
                             .background(Color.white.opacity(0.2))
                             .cornerRadius(8)
-                            .foregroundColor(.white)
                         
                         TextField("Expiry Date (MM/YY)", text: $expiryDate)
-                            .accentColor(.white) // Cursor color
+                            .accentColor(.white)
                             .foregroundColor(.white)
                             .keyboardType(.numberPad)
                             .padding()
                             .background(Color.white.opacity(0.2))
                             .cornerRadius(8)
-                            .foregroundColor(.white)
                     }
                     .padding(.horizontal)
                 }
@@ -88,17 +95,16 @@ struct PaymentOptionsView: View {
                     price: price,
                     storage: storage,
                     color: color,
-                    customerName: customerName,
-                    address: address,
-                    city: city,
-                    postalCode: postalCode
+                    customerName: appUser?.fullname ?? "Unknown",
+                    address: appUser?.address ?? "No Address",
+                    city: appUser?.cityCountry ?? "No City"
                 )) {
                     Text("Confirm Order")
                         .frame(width: 200, height: 50)
                         .background(Color.white)
-                        .foregroundColor(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))) // Sets text color to #BF387D
+                        .foregroundColor(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
                         .cornerRadius(8)
-                        .padding(.top, 20) // Padding for button
+                        .padding(.top, 20)
                 }
                 .padding(.leading, 100)
                 .padding(.bottom, 20)
@@ -110,7 +116,7 @@ struct PaymentOptionsView: View {
             ToolbarItem(placement: .principal) {
                 Text("Payment Options")
                     .foregroundColor(.white)
-                    .font(.headline) // Customize the font if needed
+                    .font(.headline)
             }
         }
     }
@@ -128,8 +134,8 @@ struct PaymentOptionsView_Previews: PreviewProvider {
                 color: "Blue",
                 customerName: "John Doe",
                 address: "123 Main Street",
-                city: "Toronto",
-                postalCode: "M5H 2N2"
+                city: "Toronto"
+              
             )
             .navigationBarTitle("Payment Options", displayMode: .inline)
         }

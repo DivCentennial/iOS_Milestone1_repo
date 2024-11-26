@@ -17,6 +17,10 @@
 		8E7789902CF4FE0C00D01139 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E77898F2CF4FE0C00D01139 /* PersistenceController.swift */; };
 		8E7789922CF4FFDD00D01139 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7789912CF4FFDD00D01139 /* LoginView.swift */; };
 		8E77899C2CF5109B00D01139 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E77899B2CF5109B00D01139 /* RegisterView.swift */; };
+		8E77899F2CF5317000D01139 /* PhoneModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E77899D2CF5317000D01139 /* PhoneModel.xcdatamodeld */; };
+		8E7789A12CF534E200D01139 /* PhonePersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7789A02CF534E200D01139 /* PhonePersistenceController.swift */; };
+		8E7789A32CF53ED900D01139 /* EnvironmentKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7789A22CF53ED900D01139 /* EnvironmentKeys.swift */; };
+		8E7789A52CF5598F00D01139 /* PreviewCoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7789A42CF5598F00D01139 /* PreviewCoreDataProvider.swift */; };
 		8ED68C092CD43D4B00EAA447 /* MAPD714_002_TeamProject_Team10App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED68C082CD43D4B00EAA447 /* MAPD714_002_TeamProject_Team10App.swift */; };
 		8ED68C0B2CD43D4B00EAA447 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED68C0A2CD43D4B00EAA447 /* ContentView.swift */; };
 		8ED68C0D2CD43D4F00EAA447 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED68C0C2CD43D4F00EAA447 /* Assets.xcassets */; };
@@ -54,6 +58,10 @@
 		8E77898F2CF4FE0C00D01139 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		8E7789912CF4FFDD00D01139 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8E77899B2CF5109B00D01139 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		8E77899E2CF5317000D01139 /* PhoneModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhoneModel.xcdatamodel; sourceTree = "<group>"; };
+		8E7789A02CF534E200D01139 /* PhonePersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePersistenceController.swift; sourceTree = "<group>"; };
+		8E7789A22CF53ED900D01139 /* EnvironmentKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentKeys.swift; sourceTree = "<group>"; };
+		8E7789A42CF5598F00D01139 /* PreviewCoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCoreDataProvider.swift; sourceTree = "<group>"; };
 		8ED68C052CD43D4B00EAA447 /* MAPD714-002_TeamProject_Team10.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAPD714-002_TeamProject_Team10.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED68C082CD43D4B00EAA447 /* MAPD714_002_TeamProject_Team10App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAPD714_002_TeamProject_Team10App.swift; sourceTree = "<group>"; };
 		8ED68C0A2CD43D4B00EAA447 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,6 +136,10 @@
 				8E77898F2CF4FE0C00D01139 /* PersistenceController.swift */,
 				8E7789912CF4FFDD00D01139 /* LoginView.swift */,
 				8E77899B2CF5109B00D01139 /* RegisterView.swift */,
+				8E77899D2CF5317000D01139 /* PhoneModel.xcdatamodeld */,
+				8E7789A02CF534E200D01139 /* PhonePersistenceController.swift */,
+				8E7789A22CF53ED900D01139 /* EnvironmentKeys.swift */,
+				8E7789A42CF5598F00D01139 /* PreviewCoreDataProvider.swift */,
 			);
 			path = "MAPD714-002_TeamProject_Team10";
 			sourceTree = "<group>";
@@ -287,13 +299,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E7789A32CF53ED900D01139 /* EnvironmentKeys.swift in Sources */,
 				33C2C1412CD87EE70041A542 /* CustomerInfoView.swift in Sources */,
 				8ED68C0B2CD43D4B00EAA447 /* ContentView.swift in Sources */,
 				33C2C1432CD87F150041A542 /* PaymentOptionsView.swift in Sources */,
 				33C2C13D2CD87C240041A542 /* ModelSelectionView.swift in Sources */,
+				8E7789A12CF534E200D01139 /* PhonePersistenceController.swift in Sources */,
 				33C2C13F2CD87EB90041A542 /* CheckoutView.swift in Sources */,
 				8E77898E2CF4FDB200D01139 /* LoginModel.xcdatamodeld in Sources */,
+				8E7789A52CF5598F00D01139 /* PreviewCoreDataProvider.swift in Sources */,
 				33C2C1452CD87F670041A542 /* ConfirmationView.swift in Sources */,
+				8E77899F2CF5317000D01139 /* PhoneModel.xcdatamodeld in Sources */,
 				33C2C13B2CD87B100041A542 /* BrandSelectionView.swift in Sources */,
 				8E7789922CF4FFDD00D01139 /* LoginView.swift in Sources */,
 				8E77899C2CF5109B00D01139 /* RegisterView.swift in Sources */,
@@ -627,6 +643,16 @@
 			);
 			currentVersion = 8E77898D2CF4FDB200D01139 /* LoginModel.xcdatamodel */;
 			path = LoginModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		8E77899D2CF5317000D01139 /* PhoneModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8E77899E2CF5317000D01139 /* PhoneModel.xcdatamodel */,
+			);
+			currentVersion = 8E77899E2CF5317000D01139 /* PhoneModel.xcdatamodel */;
+			path = PhoneModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -52,8 +52,8 @@ struct CustomerInfoView: View {
                 color: color,
                 customerName: fullName,
                 address: address,
-                city: city,
-                postalCode: postalCode
+                city: city
+                //postalCode: postalCode
                 // Removed phoneNumber and emailAddress as parameters
             )) {
                 Text("Proceed to Payment")
