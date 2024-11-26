@@ -10,20 +10,20 @@
 import SwiftUI
 
 struct ContentView: View {
+
     @State private var loggedInUsername: String? // Stores the logged-in username
 
     var body: some View {
         NavigationView {
             if let username = loggedInUsername {
                 ProfileView(loggedInUsername: $loggedInUsername, username: username) // Pass the binding to ProfileView
+    
             } else {
                 LoginView(loggedInUsername: $loggedInUsername) // Pass the binding to LoginView
             }
         }
     }
 }
-
-
 
 
 //import SwiftUI

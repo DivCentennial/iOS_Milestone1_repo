@@ -16,7 +16,7 @@ struct ConfirmationView: View {
     let customerName: String
     let address: String
     let city: String
-    let postalCode: String
+   
     
     var body: some View {
         VStack(spacing: 20) {
@@ -55,7 +55,7 @@ struct ConfirmationView: View {
                     .foregroundColor(.white)
                     .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
                        
-                Text("Delivery Address: \(address), \(city), \(postalCode)")
+                Text("Delivery Address: \(address), \(city)")
                     .padding(.vertical, 20) // Increase vertical padding
                     .foregroundColor(.white)
                     .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
@@ -84,8 +84,8 @@ struct ConfirmationView_Previews: PreviewProvider {
             color: "Blue",
             customerName: "John Doe",
             address: "123 Main Street",
-            city: "Toronto",
-            postalCode: "M5H 2N2"
+            city: "Toronto"
+            //postalCode: "M5H 2N2"
         )
         .previewDevice("iPhone 14") // You can specify the device here
         .navigationBarTitle("Confirmation", displayMode: .inline)

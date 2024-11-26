@@ -19,6 +19,8 @@ struct PersistenceController {
         container.loadPersistentStores { storeDescription, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
+            } else {
+                print("Loaded persistent store: \(storeDescription)")
             }
         }
     }
@@ -41,8 +43,10 @@ struct PersistenceController {
         newUser.telephone = "123-456-7890"
         newUser.username = "john_doe"
         newUser.password = "securepassword"
+
         // If email is part of your model, uncomment this line:
         // newUser.email = "john@example.com"
+
 
         do {
             try viewContext.save()
