@@ -1,55 +1,49 @@
-/*
- 
- Name: - Divyanshoo Sinha (301486627)
-       - Kashish Pramod Yadav (301485842)
-       Project Milestone 1
-       Group Project
-       Team 10
-     Overall Description: This milestone 1 we make a mobile shopping app where we can shop different brands with their respective models using SWIFT UI.*/
-
 //
 //  ContentView.swift
 //  MAPD714-002_TeamProject_Team10
 //
 //  Created by Kashish Yadav on 2024-10-31.
-// Description: Opening page of the app with brand logo and slogan 
+// Description: Opening page of the app with brand logo and slogan
+//This acts like a bridge between loginview.swift and RegisterView.swift
 
 
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isLoggedIn = false
+    @State private var loggedInUsername: String? // Stores the logged-in username
 
     var body: some View {
         NavigationView {
-            if isLoggedIn {
-                BrandSelectionView()
+            if let username = loggedInUsername {
+                ProfileView(loggedInUsername: $loggedInUsername, username: username) // Pass the binding to ProfileView
             } else {
-                LoginView(isLoggedIn: $isLoggedIn) // Pass the binding to LoginView
+                LoginView(loggedInUsername: $loggedInUsername) // Pass the binding to LoginView
             }
         }
     }
 }
 
 
+
+
 //import SwiftUI
 //
 //struct ContentView: View {
-//    
+//
 //    var body: some View {
 //        NavigationView { // Wrap the content in a NavigationView
 //            VStack(spacing: 20) {
-//                
+//
 //                // Logo
 //                Image("cenphone_logo") // Replace with your actual image name
 //                    .resizable()
 //                    .frame(width: 400, height: 360)
-//                
+//
 //                // Slogan
 ////                Text("Cenphone - The Future of Mobile")
 ////                    .font(.title)
 ////                    .multilineTextAlignment(.center)
-//                
+//
 //                // Order Now Button
 //                NavigationLink(destination: BrandSelectionView()) { // Directly use NavigationLink
 //                    Text("Order Now")
@@ -71,5 +65,3 @@ struct ContentView: View {
 //#Preview {
 //    ContentView()
 //}
-
-

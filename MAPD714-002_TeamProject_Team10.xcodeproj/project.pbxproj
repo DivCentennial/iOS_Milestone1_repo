@@ -13,6 +13,7 @@
 		33C2C1412CD87EE70041A542 /* CustomerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2C1402CD87EE50041A542 /* CustomerInfoView.swift */; };
 		33C2C1432CD87F150041A542 /* PaymentOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2C1422CD87F060041A542 /* PaymentOptionsView.swift */; };
 		33C2C1452CD87F670041A542 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2C1442CD87F640041A542 /* ConfirmationView.swift */; };
+		33C7C4FA2CF54EC900678175 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C7C4F92CF54EB100678175 /* ProfileView.swift */; };
 		8E77898E2CF4FDB200D01139 /* LoginModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E77898C2CF4FDB200D01139 /* LoginModel.xcdatamodeld */; };
 		8E7789902CF4FE0C00D01139 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E77898F2CF4FE0C00D01139 /* PersistenceController.swift */; };
 		8E7789922CF4FFDD00D01139 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7789912CF4FFDD00D01139 /* LoginView.swift */; };
@@ -50,6 +51,7 @@
 		33C2C1402CD87EE50041A542 /* CustomerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerInfoView.swift; sourceTree = "<group>"; };
 		33C2C1422CD87F060041A542 /* PaymentOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionsView.swift; sourceTree = "<group>"; };
 		33C2C1442CD87F640041A542 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
+		33C7C4F92CF54EB100678175 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8E77898D2CF4FDB200D01139 /* LoginModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LoginModel.xcdatamodel; sourceTree = "<group>"; };
 		8E77898F2CF4FE0C00D01139 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		8E7789912CF4FFDD00D01139 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		8ED68C072CD43D4B00EAA447 /* MAPD714-002_TeamProject_Team10 */ = {
 			isa = PBXGroup;
 			children = (
+				33C7C4F92CF54EB100678175 /* ProfileView.swift */,
 				33C2C1442CD87F640041A542 /* ConfirmationView.swift */,
 				33C2C1422CD87F060041A542 /* PaymentOptionsView.swift */,
 				33C2C1402CD87EE50041A542 /* CustomerInfoView.swift */,
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33C2C1412CD87EE70041A542 /* CustomerInfoView.swift in Sources */,
+				33C7C4FA2CF54EC900678175 /* ProfileView.swift in Sources */,
 				8ED68C0B2CD43D4B00EAA447 /* ContentView.swift in Sources */,
 				33C2C1432CD87F150041A542 /* PaymentOptionsView.swift in Sources */,
 				33C2C13D2CD87C240041A542 /* ModelSelectionView.swift in Sources */,

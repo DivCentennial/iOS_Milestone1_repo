@@ -2,10 +2,10 @@
  
  Name: - Divyanshoo Sinha (301486627)
        - Kashish Pramod Yadav (301485842)
-       Project Milestone 1
+       Project Milestone 2
        Group Project
        Team 10
-     Overall Description: This milestone 1 we make a mobile shopping app where we can shop different brands with their respective models using SWIFT UI.*/
+     Overall Description: Overall Description: This milestone 2 we make a mobile shopping app where we integrate core data which is like database for ios.*/
 
 
 

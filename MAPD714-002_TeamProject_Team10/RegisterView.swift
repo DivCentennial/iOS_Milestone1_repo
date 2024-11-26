@@ -1,9 +1,5 @@
-//
-//  RegisterView.swift
-//  MAPD714-002_TeamProject_Team10
-//
-//  Created by Kashish Yadav on 2024-11-25.
-//
+// RegisterView.swift: This file defines the registration screen where users can create a new account by entering their details, which are saved to Core Data, with feedback provided through toast messages.
+
 
 import SwiftUI
 import CoreData
@@ -18,69 +14,76 @@ struct RegisterView: View {
     @State private var username: String = ""
     @State private var password: String = ""
 
-    @State private var registrationMessage: String = ""
+    @State private var showToast: Bool = false
+    @State private var toastMessage: String = ""
 
     var body: some View {
         ZStack {
-            // Pink background that extends to cover the entire screen
-            Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)) // Match background color
-                .edgesIgnoringSafeArea(.all) // Makes the background color cover the whole screen
+            Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))
+                .edgesIgnoringSafeArea(.all)
 
             VStack {
-                // Cenphone Logo at the top
-                Image("cenphone_logo") // Ensure the image name matches your asset
+                Image("cenphone_logo")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 250, height: 150) // Adjust the size as needed
-                    .padding(.top, 10) // Add padding to give space from the top
+                    .frame(width: 250, height: 150)
+                    .padding(.top, 10)
 
                 Text("Register")
                     .font(.title3)
-                    .foregroundColor(.white)  // White text for the title
+                    .foregroundColor(.white)
                     .padding(.bottom, 10)
 
-                // Input Fields with consistent styling
                 Group {
                     TextField("Full Name", text: $fullName)
                     TextField("Address", text: $address)
                     TextField("City and Country", text: $cityCountry)
                     TextField("Telephone", text: $telephone)
                     TextField("Email", text: $username)
-//                    TextField("Username (optional)", text: $username)
                     SecureField("Password", text: $password)
                 }
                 .padding()
-                .background(Color.white.opacity(0.8))  // Light white background for text fields
-                .cornerRadius(10)  // Rounded corners
+                .background(Color.white.opacity(0.8))
+                .cornerRadius(10)
                 .padding(.bottom, 10)
                 .frame(width: 300)
 
-                // Register Button
                 Button(action: handleRegister) {
                     Text("Submit")
                         .font(.headline)
                         .frame(width: 200, height: 50)
                         .background(Color.white)
                         .foregroundColor(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
-                        .cornerRadius(10)  // Rounded corners for button
+                        .cornerRadius(10)
                 }
                 .padding(.bottom, 10)
 
-                // Status Message
-                if !registrationMessage.isEmpty {
-                    Text(registrationMessage)
-                        .foregroundColor(.red)
+                if showToast {
+                    Text(toastMessage)
+                        .font(.subheadline)
                         .padding()
+                        .background(Color.red)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                        .transition(.move(edge: .bottom))
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                withAnimation {
+                                    showToast = false
+                                }
+                            }
+                        }
                 }
             }
             .padding()
-            .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensures the VStack takes the entire screen
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 
     private func handleRegister() {
         guard !fullName.isEmpty, !username.isEmpty, !password.isEmpty else {
-            registrationMessage = "Please fill in all required fields."
+            toastMessage = "Please fill in all required fields."
+            showToast = true
             return
         }
 
@@ -98,9 +101,11 @@ struct RegisterView: View {
 
         do {
             try viewContext.save()
-            registrationMessage = "Registration successful!"
+            toastMessage = "Registration successful!"
+            showToast = true
         } catch {
-            registrationMessage = "Failed to register. Please try again."
+            toastMessage = "Failed to register. Please try again."
+            showToast = true
         }
     }
 }

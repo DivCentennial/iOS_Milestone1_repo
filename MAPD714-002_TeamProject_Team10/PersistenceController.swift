@@ -1,9 +1,5 @@
-//
-//  PersistenceController.swift
-//  MAPD714-002_TeamProject_Team10
-//
-//  Created by Kashish Yadav on 2024-11-25.
-//
+// PersistenceController.swift: Manages Core Data setup, persistent store loading, and provides access to the view context for data operations and SwiftUI previews.
+
 
 import Foundation
 import CoreData
@@ -14,7 +10,7 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "LoginModel") // Replace with your model name
+        container = NSPersistentContainer(name: "LoginModel") // Ensure this matches your model name
 
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
@@ -26,10 +22,11 @@ struct PersistenceController {
             }
         }
     }
+
     // Provide access to the viewContext
-        var viewContext: NSManagedObjectContext {
-            return container.viewContext
-        }
+    var viewContext: NSManagedObjectContext {
+        return container.viewContext
+    }
 
     // For Preview in SwiftUI
     static var preview: PersistenceController = {
@@ -42,9 +39,10 @@ struct PersistenceController {
         newUser.address = "123 Main St"
         newUser.cityCountry = "City, Country"
         newUser.telephone = "123-456-7890"
-//        newUser.email = "john@example.com"
         newUser.username = "john_doe"
         newUser.password = "securepassword"
+        // If email is part of your model, uncomment this line:
+        // newUser.email = "john@example.com"
 
         do {
             try viewContext.save()
@@ -55,4 +53,3 @@ struct PersistenceController {
         return controller
     }()
 }
-
