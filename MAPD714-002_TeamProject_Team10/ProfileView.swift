@@ -156,7 +156,7 @@ struct ProfileView: View {
                 try viewContext.save()
 
                 // After saving, navigate to the next screen
-                navigateToBrandSelection = true // Trigger navigation to BrandSelectionView
+                navigateToBrandSelection = false // Trigger navigation to BrandSelectionView
             }
         } catch {
             print("Error saving profile: \(error)")
