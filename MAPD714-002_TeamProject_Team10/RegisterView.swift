@@ -40,7 +40,7 @@ struct RegisterView: View {
                     TextField("Address", text: $address)
                     TextField("City and Country", text: $cityCountry)
                     TextField("Telephone", text: $telephone)
-                    TextField("Email", text: $username)
+                    TextField("Email", text: $username).autocapitalization(.none)
                     SecureField("Password", text: $password)
                     SecureField("Confirm Password", text: $confirmPassword)  // Added Confirm Password field
                 }
