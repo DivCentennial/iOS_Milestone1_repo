@@ -77,21 +77,21 @@ struct ProfileView: View {
                     // Save Button
                     Button(action: saveProfile) {
                         Text("Save Changes")
-                            .frame(width: 200, height: 50)
+                            .frame(width: 200, height: 30)
                             .background(primaryColor)
                             .foregroundColor(.white)
                             .cornerRadius(8)
-                            .padding(.top, 20)
+                            .padding(.top, 1)
                     }
 
                     // Button to navigate to the brand selection screen
                     NavigationLink(destination: BrandSelectionView(), isActive: $navigateToBrandSelection) {
                         Text("Select Phone Brand")
-                            .frame(width: 200, height: 50)
+                            .frame(width: 200, height: 30)
                             .background(Color.white)
                             .foregroundColor(primaryColor) // Sets text color to #BF387D
                             .cornerRadius(8)
-                            .padding(.top, 20) // Padding for button
+                            .padding(.top, 1) // Padding for button
                     }
 
                     Spacer() // Push content to the top

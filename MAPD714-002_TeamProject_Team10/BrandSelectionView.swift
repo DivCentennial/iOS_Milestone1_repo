@@ -53,7 +53,7 @@ struct BrandSelectionView: View {
 
             // Save button to persist selected brand to Core Data
             Button(action: saveSelectedBrand) {
-                Text("Save and Continue")
+                Text("Save Selection")
                     .frame(width: 200, height: 50)
                     .background(Color.white)
                     .foregroundColor(Color(UIColor(red: 191 / 255, green: 56 / 255, blue: 125 / 255, alpha: 1.0)))
