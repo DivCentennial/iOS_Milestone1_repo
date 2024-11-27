@@ -27,8 +27,9 @@ import CoreData
 
 struct LoginView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var authManager: AuthManager // Access AuthManager from the environment
     @Binding var loggedInUsername: String? // Binding for the logged-in username
-    
+
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var showToast: Bool = false
@@ -52,7 +53,7 @@ struct LoginView: View {
                     .foregroundColor(.white)
                     .padding(.bottom, 20)
 
-                TextField("Username", text: $username)
+                TextField("Email / Username", text: $username)
                     .padding()
                     .background(Color.white.opacity(0.8))
                     .cornerRadius(10)
@@ -69,8 +70,8 @@ struct LoginView: View {
                     Text("Login")
                         .font(.headline)
                         .frame(width: 200, height: 50)
-                        .background(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
-                        .foregroundColor(.white)
+                        .background(Color.white.opacity(0.8))
+                        .foregroundColor(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
                         .cornerRadius(10)
                 }
                 .padding(.bottom, 10)
@@ -110,6 +111,13 @@ struct LoginView: View {
     }
 
     private func handleLogin() {
+        // Ensure inputs are not empty
+        guard !username.isEmpty, !password.isEmpty else {
+            toastMessage = "Please enter both username and password."
+            showToast = true
+            return
+        }
+
         let fetchRequest: NSFetchRequest<AppUser> = AppUser.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "username == %@", username)
 
@@ -117,13 +125,22 @@ struct LoginView: View {
             let users = try viewContext.fetch(fetchRequest)
             if let user = users.first, user.password == password {
                 loggedInUsername = username // Update the logged-in username
+                authManager.setCurrentUser(user: user) // Set current user in AuthManager
             } else {
-                toastMessage = "Invalid username or password"
+                toastMessage = "Invalid username or password."
                 showToast = true
             }
         } catch {
-            toastMessage = "Error during login"
+            toastMessage = "Error during login: \(error.localizedDescription)"
             showToast = true
         }
+    }
+}
+
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView(loggedInUsername: .constant(nil))
+            .environment(\.managedObjectContext, PersistenceController.preview.viewContext)
+            .environmentObject(AuthManager()) // Add environment object for preview
     }
 }

@@ -8,7 +8,7 @@ import CoreData
 
 struct CheckoutView: View {
     @Environment(\.phoneContext) private var phoneContext // Access Core Data context
-    var selectedPhone: PhoneData // The selected phone passed as a parameter
+    var selectedPhone: Phone // The selected phone passed as a parameter
 
     var body: some View {
         VStack(spacing: 15) {
@@ -16,18 +16,22 @@ struct CheckoutView: View {
             List {
                 Text("Brand: \(selectedPhone.phoneBrand ?? "N/A")")
                 Text("Model: \(selectedPhone.phoneModel ?? "N/A")")
-                Text("Price: \(selectedPhone.phonePrice ?? "N/A")")
-                Text("Storage: \(selectedPhone.phoneStorage ?? "N/A")")
+                Text("Price: \(selectedPhone.price ?? "N/A")")
+                Text("Storage: \(selectedPhone.storageCapacity ?? "N/A")")
                 Text("Color: \(selectedPhone.phoneColor ?? "N/A")")
-                Text("Carrier: \(selectedPhone.phoneCarrier ?? "N/A")")
+                Text("Carrier: \(selectedPhone.carrier ?? "N/A")")
             }
+            .onAppear {
+                        print("selectedPhone in CheckoutView: \(selectedPhone)")
+                    }
+
 
             // Navigate to Payment Options View, passing the phone data
             NavigationLink(destination: PaymentOptionsView(
                 brand: selectedPhone.phoneBrand ?? "N/A",
                 model: selectedPhone.phoneModel ?? "N/A",
-                price: selectedPhone.phonePrice ?? "N/A",
-                storage: selectedPhone.phoneStorage ?? "N/A",
+                price: selectedPhone.price ?? "N/A",
+                storage: selectedPhone.storageCapacity ?? "N/A",
                 color: selectedPhone.phoneColor ?? "N/A",
                 customerName: "", // Placeholder, add real data if needed
                 address: "",      // Placeholder
@@ -58,15 +62,15 @@ struct CheckoutView: View {
 // Preview for CheckoutView
 struct CheckoutView_Previews: PreviewProvider {
     static var previews: some View {
-        let previewContext = PhonePersistenceController.preview.container.viewContext
-        let examplePhone = PhoneData(context: previewContext)
+        let previewContext = PersistenceController.preview.container.viewContext
+        let examplePhone = Phone(context: previewContext)
         examplePhone.productId = UUID()
         examplePhone.phoneBrand = "iPhone"
         examplePhone.phoneModel = "iPhone 15 Pro"
-        examplePhone.phonePrice = "$999"
-        examplePhone.phoneStorage = "256 GB"
+        examplePhone.price = "$999"
+        examplePhone.storageCapacity = "256 GB"
         examplePhone.phoneColor = "Space Gray"
-        examplePhone.phoneCarrier = "Verizon"
+        examplePhone.carrier = "Verizon"
 
         return NavigationView {
             CheckoutView(selectedPhone: examplePhone)

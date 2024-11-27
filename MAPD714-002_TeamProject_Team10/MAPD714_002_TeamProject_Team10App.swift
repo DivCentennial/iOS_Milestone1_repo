@@ -20,18 +20,15 @@ import SwiftUI
 
 @main
 struct MAPD714_002_TeamProject_Team10App: App {
-    // Create instances of both PersistenceControllers
-    let loginPersistenceController = PersistenceController.shared // For LoginModel
-    let phonePersistenceController = PhonePersistenceController.shared // For PhoneModel
-
+    let persistenceController = PersistenceController.shared
+    @StateObject private var authManager = AuthManager() // Create an instance of AuthManager
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .accentColor(.white)
-                // Inject the viewContext for LoginModel
-                .environment(\.managedObjectContext, loginPersistenceController.viewContext)
-                // Inject the viewContext for PhoneModel using the custom key
-                .environment(\.phoneContext, phonePersistenceController.viewContext)
+                .environment(\.managedObjectContext, persistenceController.viewContext)
+                .environment(\.phoneContext, persistenceController.viewContext) // Inject phoneContext here
+                .environmentObject(authManager) // Inject it into the environment
         }
     }
 }

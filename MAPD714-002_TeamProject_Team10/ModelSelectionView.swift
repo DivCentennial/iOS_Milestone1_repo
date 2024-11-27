@@ -17,6 +17,9 @@ struct ModelSelectionView: View {
     @State private var selectedStorage = "64 GB"
     @State private var selectedColor = "Blue"
     @State private var selectedCarrier = "Bell"
+    
+    // State to hold selected phone data
+    @State private var selectedPhone: Phone? = nil
 
     // Array of models
     let models = [
@@ -93,86 +96,81 @@ struct ModelSelectionView: View {
                 }
                 .disabled(selectedModel.isEmpty) // Disable if no model is selected
 
-                NavigationLink(destination: CheckoutView(
-                    selectedPhone: fetchPhoneData() // Pass the fetched phone data directly
-                )) {
+                NavigationLink(destination: CheckoutView(selectedPhone: selectedPhone ?? Phone(context: phoneContext))) {
                     Text("Proceed to Checkout")
-                        .frame(width: 200, height: 50)  // Fixed width and height
-                        .background(Color.white)         // White background
-                        .foregroundColor(Color(UIColor(red: 191 / 255, green: 56 / 255, blue: 125 / 255, alpha: 1.0))) // Custom text color
-                        .cornerRadius(8)                 // Rounded corners
+                        .frame(width: 200, height: 50)
+                        .background(Color.white)
+                        .foregroundColor(Color(UIColor(red: 191 / 255, green: 56 / 255, blue: 125 / 255, alpha: 1.0)))
+                        .cornerRadius(8)
                         .padding(.top, 10)
                 }
                 .disabled(selectedModel.isEmpty) // Disable if no model is selected
                 .padding()
             }
         }
-//        .onAppear {
-//            // Reset the selected values if the user navigates back to this view
-//            selectedModel = ""
-//            selectedStorage = "64 GB"
-//            selectedColor = "Blue"
-//            selectedCarrier = "Bell"
-//        }
+        .onAppear {
+            phoneContext.refreshAllObjects() // Refresh all objects
+            selectedPhone = fetchPhoneData() // Fetch phone data and assign to selectedPhone state
+            print("selectedPhone in onAppear: \(String(describing: selectedPhone))")
+        }
         .onDisappear {
-                    // Save the context when the view disappears
-                    do {
-                        try phoneContext.save()
-                        print("Context saved successfully")
-                    } catch {
-                        print("Failed to save context: \(error)")
-                    }
-                }
+            // Save the context when the view disappears
+            do {
+                try phoneContext.save()
+                print("Context saved successfully")
+            } catch {
+                print("Failed to save context: \(error)")
+            }
+        }
     }
 
     // Save selected details to Core Data
     private func savePhoneDetails() {
-        // Create a fetch request to check if the same model already exists in Core Data
-        let fetchRequest: NSFetchRequest<PhoneData> = PhoneData.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "phoneModel == %@ AND phoneBrand == %@", selectedModel, selectedBrand) // Match based on model and brand
+        let fetchRequest: NSFetchRequest<Phone> = Phone.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "phoneModel == %@ AND phoneBrand == %@", selectedModel, selectedBrand)
         
         do {
             let result = try phoneContext.fetch(fetchRequest)
             
             if let existingPhoneData = result.first {
-                // Debugging: Check the values before update
-                print("Updating existing phone data: \(existingPhoneData)")
-                
-                // Update the existing object with new selections
+                // Update the existing phone data
                 existingPhoneData.phoneModel = selectedModel
                 existingPhoneData.phoneColor = selectedColor
-                existingPhoneData.phoneStorage = selectedStorage
-                existingPhoneData.phoneCarrier = selectedCarrier
-                existingPhoneData.phonePrice = prices[selectedModel] ?? "N/A"
+                existingPhoneData.storageCapacity = selectedStorage
+                existingPhoneData.carrier = selectedCarrier
+                existingPhoneData.price = prices[selectedModel] ?? "N/A"
                 
                 try phoneContext.save()
                 print("Phone details updated successfully: \(existingPhoneData)")
+
+                // After saving, set the selectedPhone state
+                selectedPhone = existingPhoneData
             } else {
-                // Debugging: Check if no existing phone data is found
-                print("No existing phone data found, creating new data.")
-                
-                // Create a new phone object if not found
-                let newPhoneData = PhoneData(context: phoneContext)
-                newPhoneData.productId = UUID() // Ensure you assign a new productId
+                // Create a new phone data object
+                let newPhoneData = Phone(context: phoneContext)
+                newPhoneData.productId = UUID()
                 newPhoneData.phoneBrand = selectedBrand
                 newPhoneData.phoneModel = selectedModel
                 newPhoneData.phoneColor = selectedColor
-                newPhoneData.phoneStorage = selectedStorage
-                newPhoneData.phonePrice = prices[selectedModel] ?? "N/A"
-                newPhoneData.phoneCarrier = selectedCarrier
+                newPhoneData.storageCapacity = selectedStorage
+                newPhoneData.price = prices[selectedModel] ?? "N/A"
+                newPhoneData.carrier = selectedCarrier
                 
                 try phoneContext.save()
                 print("New phone details saved successfully: \(newPhoneData)")
+
+                // After saving, set the selectedPhone state
+                selectedPhone = newPhoneData
             }
         } catch {
             print("Failed to save phone details: \(error)")
         }
     }
 
-    
+
     // Fetch the phone data from Core Data for the checkout
-    private func fetchPhoneData() -> PhoneData {
-        let fetchRequest: NSFetchRequest<PhoneData> = PhoneData.fetchRequest()
+    private func fetchPhoneData() -> Phone? {
+        let fetchRequest: NSFetchRequest<Phone> = Phone.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "phoneModel == %@ AND phoneBrand == %@", selectedModel, selectedBrand)
         
         do {
@@ -182,19 +180,18 @@ struct ModelSelectionView: View {
                 return phone
             } else {
                 print("No matching phone found in Core Data")
-                return PhoneData(context: phoneContext) // Return a new empty object if not found
+                return nil // Return nil if no matching phone is found
             }
         } catch {
             print("Error fetching phone data: \(error)")
-            return PhoneData(context: phoneContext) // Return a new empty object in case of error
+            return nil // Return nil in case of error
         }
     }
-
 }
 
 struct ModelSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         ModelSelectionView(selectedBrand: "iPhone")
-            .environment(\.phoneContext, PhonePersistenceController.preview.container.viewContext)
+            .environment(\.phoneContext, PersistenceController.preview.container.viewContext)
     }
 }

@@ -86,7 +86,7 @@ struct BrandSelectionView: View {
 
     // Function to save the selected brand to Core Data
     private func saveSelectedBrand() {
-        let newPhoneData = PhoneData(context: phoneContext)
+        let newPhoneData = Phone(context: phoneContext)
         newPhoneData.productId = UUID()
         newPhoneData.phoneBrand = selectedBrand
 
@@ -102,6 +102,6 @@ struct BrandSelectionView: View {
 struct BrandSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         BrandSelectionView()
-            .environment(\.phoneContext, PhonePersistenceController.preview.container.viewContext)
+            .environment(\.phoneContext, PersistenceController.preview.container.viewContext)
     }
 }

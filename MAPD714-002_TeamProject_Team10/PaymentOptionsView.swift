@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct PaymentOptionsView: View {
+    @EnvironmentObject var authManager: AuthManager // Access AuthManager from the environment
+    
     @State private var selectedPaymentMethod = ""
     @State private var cardNumber = ""
     @State private var expiryDate = ""
@@ -24,12 +26,13 @@ struct PaymentOptionsView: View {
     let city: String
     
     // Fetch AppUser from Core Data
-       @FetchRequest(
-           entity: AppUser.entity(),
-           sortDescriptors: [NSSortDescriptor(keyPath: \AppUser.fullname, ascending: true)],
-           predicate: nil,
-           animation: .default
-       ) var appUsers: FetchedResults<AppUser>
+    @FetchRequest(
+        entity: AppUser.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \AppUser.fullname, ascending: true)],
+        predicate: NSPredicate(format: "username == %@", "user2_username"), // Replace with actual logged-in username
+        animation: .default
+    ) var appUsers: FetchedResults<AppUser>
+
     
     // Extract user data (assuming only one user is present in Core Data)
        var appUser: AppUser? {
@@ -95,9 +98,9 @@ struct PaymentOptionsView: View {
                     price: price,
                     storage: storage,
                     color: color,
-                    customerName: appUser?.fullname ?? "Unknown",
-                    address: appUser?.address ?? "No Address",
-                    city: appUser?.cityCountry ?? "No City"
+                    customerName: authManager.currentUser?.fullname ?? "Unknown",
+                    address: authManager.currentUser?.address ?? "No Address",
+                    city: authManager.currentUser?.cityCountry ?? "No City"
                 )) {
                     Text("Confirm Order")
                         .frame(width: 200, height: 50)
