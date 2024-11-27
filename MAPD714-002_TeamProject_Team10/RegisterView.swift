@@ -13,6 +13,7 @@ struct RegisterView: View {
     @State private var email: String = ""
     @State private var username: String = ""
     @State private var password: String = ""
+    @State private var confirmPassword: String = ""  // New state for confirm password
 
     @State private var showToast: Bool = false
     @State private var toastMessage: String = ""
@@ -41,6 +42,7 @@ struct RegisterView: View {
                     TextField("Telephone", text: $telephone)
                     TextField("Email", text: $username)
                     SecureField("Password", text: $password)
+                    SecureField("Confirm Password", text: $confirmPassword)  // Added Confirm Password field
                 }
                 .padding()
                 .background(Color.white.opacity(0.8))
@@ -81,8 +83,15 @@ struct RegisterView: View {
     }
 
     private func handleRegister() {
-        guard !fullName.isEmpty, !username.isEmpty, !password.isEmpty else {
+        guard !fullName.isEmpty, !username.isEmpty, !password.isEmpty, !confirmPassword.isEmpty else {
             toastMessage = "Please fill in all required fields."
+            showToast = true
+            return
+        }
+
+        // Check if the passwords match
+        guard password == confirmPassword else {
+            toastMessage = "Passwords do not match."
             showToast = true
             return
         }
