@@ -19,7 +19,7 @@ struct ProfileView: View {
     let primaryColor = Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)) // #BF387D Color
 
     var body: some View {
-        NavigationView { // Wrap in a NavigationView
+       // NavigationView { // Wrap in a NavigationView
             ZStack {
                 // Background color
                 primaryColor
@@ -77,7 +77,7 @@ struct ProfileView: View {
                     // Save Button
                     Button(action: saveProfile) {
                         Text("Save Changes")
-                            .frame(width: 200, height: 30)
+                            .frame(width: 200, height: 40)
                             .background(primaryColor)
                             .foregroundColor(.white)
                             .cornerRadius(8)
@@ -87,7 +87,7 @@ struct ProfileView: View {
                     // Button to navigate to the brand selection screen
                     NavigationLink(destination: BrandSelectionView(), isActive: $navigateToBrandSelection) {
                         Text("Select Phone Brand")
-                            .frame(width: 200, height: 30)
+                            .frame(width: 200, height: 40)
                             .background(Color.white)
                             .foregroundColor(primaryColor) // Sets text color to #BF387D
                             .cornerRadius(8)
@@ -102,7 +102,7 @@ struct ProfileView: View {
             .navigationBarTitle("Profile", displayMode: .inline) // Navigation title
             .navigationBarItems(leading: backButton) // Add back button
         }
-    }
+    
 
     // Custom back button (Logout button)
     private var backButton: some View {

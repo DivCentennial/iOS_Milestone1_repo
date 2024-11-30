@@ -49,6 +49,7 @@ struct CheckoutView: View {
         .padding()
         .background(Color(UIColor(red: 191 / 255, green: 56 / 255, blue: 125 / 255, alpha: 1.0))) // Custom background color (#BF387D)
         .navigationBarTitle("Checkout", displayMode: .inline)
+        
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Checkout")
