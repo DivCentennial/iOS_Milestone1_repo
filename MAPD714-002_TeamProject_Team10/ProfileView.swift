@@ -25,99 +25,105 @@ struct ProfileView: View {
     @State private var telephone: String = ""
 
     @State private var navigateToBrandSelection: Bool = false // State to control navigation
+    @State private var navigateToOrderHistory: Bool = false // State for Order History navigation
 
     let primaryColor = Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)) // #BF387D Color
 
     var body: some View {
-       // NavigationView { // Wrap in a NavigationView
-            ZStack {
-                // Background color
-                primaryColor
-                    .edgesIgnoringSafeArea(.all)
+        ZStack {
+            // Background color
+            primaryColor
+                .edgesIgnoringSafeArea(.all)
 
-                VStack {
-                    // Header: Profile title
-                    Text("Profile")
-                        .font(.title2)
-                        .foregroundColor(.white)
+            VStack {
+                // Header: Profile title
+                Text("")
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+                    .padding(.bottom, 20)
+
+                // Editable profile information section
+                VStack(alignment: .leading, spacing: 15) {
+                    Text("Full Name:")
+                    TextField("Enter full name", text: $fullName)
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(8)
                         .padding(.bottom, 10)
-                    
-                    Text("To edit, please click inside the form field.")
-                        .font(.subheadline)
-                        .foregroundColor(.white)
+
+                    Text("Email:")
+                    TextField("Enter email", text: $email)
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(8)
                         .padding(.bottom, 10)
 
-                    // Editable profile information section
-                    VStack(alignment: .leading, spacing: 15) {
-                        Text("Full Name:")
-                        TextField("Enter full name", text: $fullName)
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            .padding(.bottom, 5)
+                    Text("Address:")
+                    TextField("Enter address", text: $address)
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(8)
+                        .padding(.bottom, 10)
 
-                        Text("Email:")
-                        TextField("Enter email", text: $email)
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            .padding(.bottom, 5)
+                    Text("City & Country:")
+                    TextField("Enter city & country", text: $cityCountry)
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(8)
+                        .padding(.bottom, 10)
 
-                        Text("Address:")
-                        TextField("Enter address", text: $address)
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            .padding(.bottom, 5)
-
-                        Text("City & Country:")
-                        TextField("Enter city & country", text: $cityCountry)
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            .padding(.bottom, 5)
-
-                        Text("Telephone:")
-                        TextField("Enter telephone", text: $telephone)
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            .padding(.bottom, 10)
-                    }
-                    .padding()
-                    .background(Color.white.opacity(0.9)) // Semi-transparent white background
-                    .cornerRadius(15)
-                    .padding()
-
-                    // Save Button
-                    Button(action: saveProfile) {
-                        Text("Save Changes")
-                            .frame(width: 200, height: 40)
-                            .background(Color.white)
-                            .foregroundColor(primaryColor)
-                            .cornerRadius(8)
-                            .padding(.top, 1)
-                    }
-
-                    // Button to navigate to the brand selection screen
-                    NavigationLink(destination: BrandSelectionView(), isActive: $navigateToBrandSelection) {
-                        Text("Proceed")
-                            .frame(width: 200, height: 40)
-                            .background(Color.white)
-                            .foregroundColor(primaryColor) // Sets text color to #BF387D
-                            .cornerRadius(8)
-                            .padding(.top, 1) // Padding for button
-                    }
-
-                    Spacer() // Push content to the top
+                    Text("Telephone:")
+                    TextField("Enter telephone", text: $telephone)
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(8)
+                        .padding(.bottom, 20)
                 }
                 .padding()
+                .background(Color.white.opacity(0.9)) // Semi-transparent white background
+                .cornerRadius(15)
+                .padding()
+
+                // Save Button
+                Button(action: saveProfile) {
+                    Text("Save Changes")
+                        .frame(width: 200, height: 40)
+                        .background(primaryColor)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                        .padding(.top, 1)
+                }
+
+                // Button to navigate to the brand selection screen
+                NavigationLink(destination: BrandSelectionView(), isActive: $navigateToBrandSelection) {
+                    Text("Select Phone Brand")
+                        .frame(width: 200, height: 40)
+                        .background(Color.white)
+                        .foregroundColor(primaryColor) // Sets text color to #BF387D
+                        .cornerRadius(8)
+                        .padding(.top, 1) // Padding for button
+                }
+
+                // Button to navigate to the Order History
+                NavigationLink(destination: OrderHistoryView(username: username), isActive: $navigateToOrderHistory) {
+                    Text("Order History")
+                        .frame(width: 200, height: 40)
+                        .background(Color.white)
+                        .foregroundColor(primaryColor) // Sets text color to #BF387D
+                        .cornerRadius(8)
+                        .padding(.top, 1)
+                }
+
+                Spacer() // Push content to the top
             }
             .onAppear(perform: fetchProfileDetails)
            // .navigationBarTitle("Profile", displayMode: .inline) // Navigation title
             .navigationBarItems(leading: backButton) // Add back button
         }
-    
+        .onAppear(perform: fetchProfileDetails)
+        .navigationBarTitle("Profile", displayMode: .inline) // Navigation title
+        .navigationBarItems(leading: backButton) // Add back button
+    }
 
     // Custom back button (Logout button)
     private var backButton: some View {

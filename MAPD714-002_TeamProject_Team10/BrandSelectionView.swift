@@ -8,7 +8,7 @@
 // Description: User may select the desired brand among apple samsung & //google pixel
 
 import SwiftUI
-
+import CoreData
 struct BrandSelectionView: View {
     @Environment(\.phoneContext) private var phoneContext // Access PhoneData context
     @State private var selectedBrand = "iPhone" // Default selection

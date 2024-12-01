@@ -6,7 +6,7 @@
 //  User can select the payment method.
 
 import SwiftUI
-
+import CoreData
 struct PaymentOptionsView: View {
     @EnvironmentObject var authManager: AuthManager // Access AuthManager from the environment
     

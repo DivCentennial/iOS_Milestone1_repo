@@ -7,7 +7,7 @@
 //This is essentially a parent view to Login and Profile Views now.
 
 import SwiftUI
-
+import CoreData
 struct ContentView: View {
 
     @State private var loggedInUsername: String? // Stores the logged-in username

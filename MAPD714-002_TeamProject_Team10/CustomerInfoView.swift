@@ -6,7 +6,7 @@
 //  Customer can input their personal data.
 ///
 import SwiftUI
-
+import CoreData
 struct CustomerInfoView: View {
     @State private var fullName = ""
     @State private var address = ""
