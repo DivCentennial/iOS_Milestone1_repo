@@ -29,7 +29,7 @@ struct OrderHistoryView: View {
 
             VStack {
                 Text("Order History")
-                    .font(.largeTitle)
+                    .font(.title2)
                     .foregroundColor(.white)
                     .padding(.bottom, 20)
 
@@ -56,7 +56,7 @@ struct OrderHistoryView: View {
             .padding()
         }
         .onAppear(perform: fetchOrderHistory)
-        .navigationBarTitle("Order History", displayMode: .inline)
+        //.navigationBarTitle("Order History", displayMode: .inline)
     }
 
     private func fetchOrderHistory() {

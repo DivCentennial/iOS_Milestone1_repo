@@ -7,7 +7,6 @@
 //
 
 
-
 import SwiftUI
 import CoreData
 
@@ -37,10 +36,6 @@ struct ProfileView: View {
 
             VStack {
                 // Header: Profile title
-                Text("")
-                    .font(.largeTitle)
-                    .foregroundColor(.white)
-                    .padding(.bottom, 20)
 
                 // Editable profile information section
                 VStack(alignment: .leading, spacing: 15) {
@@ -77,7 +72,7 @@ struct ProfileView: View {
                         .padding()
                         .background(Color.white)
                         .cornerRadius(8)
-                        .padding(.bottom, 20)
+                       // .padding(.bottom, 0)
                 }
                 .padding()
                 .background(Color.white.opacity(0.9)) // Semi-transparent white background
@@ -88,8 +83,8 @@ struct ProfileView: View {
                 Button(action: saveProfile) {
                     Text("Save Changes")
                         .frame(width: 200, height: 40)
-                        .background(primaryColor)
-                        .foregroundColor(.white)
+                        .background(Color.white)
+                        .foregroundColor(primaryColor)
                         .cornerRadius(8)
                         .padding(.top, 1)
                 }
@@ -122,7 +117,14 @@ struct ProfileView: View {
         }
         .onAppear(perform: fetchProfileDetails)
         .navigationBarTitle("Profile", displayMode: .inline) // Navigation title
-        .navigationBarItems(leading: backButton) // Add back button
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Profile")
+                    .foregroundColor(.white)
+                    .font(.headline) // Customize the font if needed
+            }
+        }
+       
     }
 
     // Custom back button (Logout button)

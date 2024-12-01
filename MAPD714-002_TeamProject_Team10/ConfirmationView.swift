@@ -31,31 +31,31 @@ struct ConfirmationView: View {
 
             List {
                 Text("Brand: \(brand)")
-                    .padding(.vertical, 10) // Increase vertical padding
+                    .padding(.vertical, 5) // Increase vertical padding
                     .foregroundColor(.white)
                     .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))) // Coloring rows
                 Text("Model: \(model)")
-                    .padding(.vertical, 10) // Increase vertical padding
+                    .padding(.vertical, 5) // Increase vertical padding
                     .foregroundColor(.white)
                     .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
                 Text("Price: \(price)")
-                    .padding(.vertical, 10) // Increase vertical padding
+                    .padding(.vertical, 5) // Increase vertical padding
                     .foregroundColor(.white)
                     .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
                 Text("Storage: \(storage)")
-                    .padding(.vertical, 10) // Increase vertical padding
+                    .padding(.vertical, 5) // Increase vertical padding
                     .foregroundColor(.white)
                     .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
                 Text("Color: \(color)")
-                    .padding(.vertical, 10) // Increase vertical padding
+                    .padding(.vertical, 5) // Increase vertical padding
                     .foregroundColor(.white)
                     .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
                 Text("Customer Name: \(customerName)")
-                    .padding(.vertical, 20)
+                    .padding(.vertical, 10)
                     .foregroundColor(.white)
                     .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
                 Text("Delivery Address: \(address), \(city)")
-                    .padding(.vertical, 20)
+                    .padding(.vertical, 10)
                     .foregroundColor(.white)
                     .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
             }
@@ -76,7 +76,7 @@ struct ConfirmationView: View {
         .padding()
         .background(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))) // Custom background color (#BF387D)
         //.edgesIgnoringSafeArea(.all) // Extend background to edges
-        .edgesIgnoringSafeArea(.all) // Extend background to edges
+        //.edgesIgnoringSafeArea(.all) // Extend background to edges
         .toast(message: showToastMessage, isShowing: $showToastMessage.wrappedValue != nil)
     }
 
