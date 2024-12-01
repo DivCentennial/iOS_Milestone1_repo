@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33267CBB2CFBC3F0008837F0 /* WishlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33267CBA2CFBC3EE008837F0 /* WishlistView.swift */; };
 		33C2C13B2CD87B100041A542 /* BrandSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2C13A2CD87AFC0041A542 /* BrandSelectionView.swift */; };
 		33C2C13D2CD87C240041A542 /* ModelSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2C13C2CD87C220041A542 /* ModelSelectionView.swift */; };
 		33C2C13F2CD87EB90041A542 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2C13E2CD87EB70041A542 /* CheckoutView.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33267CBA2CFBC3EE008837F0 /* WishlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistView.swift; sourceTree = "<group>"; };
 		33C2C13A2CD87AFC0041A542 /* BrandSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandSelectionView.swift; sourceTree = "<group>"; };
 		33C2C13C2CD87C220041A542 /* ModelSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectionView.swift; sourceTree = "<group>"; };
 		33C2C13E2CD87EB70041A542 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		8ED68C072CD43D4B00EAA447 /* MAPD714-002_TeamProject_Team10 */ = {
 			isa = PBXGroup;
 			children = (
+				33267CBA2CFBC3EE008837F0 /* WishlistView.swift */,
 				33C7C4F92CF54EB100678175 /* ProfileView.swift */,
 				33C2C1442CD87F640041A542 /* ConfirmationView.swift */,
 				33C2C1422CD87F060041A542 /* PaymentOptionsView.swift */,
@@ -316,6 +319,7 @@
 				33C2C1452CD87F670041A542 /* ConfirmationView.swift in Sources */,
 				33C2C13B2CD87B100041A542 /* BrandSelectionView.swift in Sources */,
 				8E7789B92CF6125600D01139 /* Model.xcmappingmodel in Sources */,
+				33267CBB2CFBC3F0008837F0 /* WishlistView.swift in Sources */,
 				8E7789922CF4FFDD00D01139 /* LoginView.swift in Sources */,
 				8E77899C2CF5109B00D01139 /* RegisterView.swift in Sources */,
 				8ED68C092CD43D4B00EAA447 /* MAPD714_002_TeamProject_Team10App.swift in Sources */,

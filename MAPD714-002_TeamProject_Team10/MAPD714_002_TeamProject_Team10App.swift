@@ -17,7 +17,7 @@
 //
 
 import SwiftUI
-
+import CoreData
 @main
 struct MAPD714_002_TeamProject_Team10App: App {
     let persistenceController = PersistenceController.shared

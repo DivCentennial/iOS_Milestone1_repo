@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23507" systemVersion="24B83" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="LoginModel_v2">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23231" systemVersion="24B83" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="LoginModel_v2">
     <entity name="AppUser" representedClassName="AppUser" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String"/>
         <attribute name="cityCountry" optional="YES" attributeType="String"/>
@@ -8,6 +8,7 @@
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="telephone" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="wishlistItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WishlistItem" inverseName="user" inverseEntity="WishlistItem"/>
     </entity>
     <entity name="Phone" representedClassName="Phone" syncable="YES" codeGenerationType="class">
         <attribute name="carrier" optional="YES" attributeType="String"/>
@@ -17,5 +18,14 @@
         <attribute name="price" optional="YES" attributeType="String"/>
         <attribute name="productId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="storageCapacity" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="WishlistItem" representedClassName="WishlistItem" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="itemBrand" optional="YES" attributeType="String"/>
+        <attribute name="itemName" optional="YES" attributeType="String"/>
+        <attribute name="phoneColor" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="String"/>
+        <attribute name="storageCapacity" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AppUser" inverseName="wishlistItems" inverseEntity="AppUser"/>
     </entity>
 </model>

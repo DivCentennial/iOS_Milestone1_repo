@@ -6,7 +6,7 @@
 // User looks at the phone details and the inputted details in the end.
 //
 import SwiftUI
-
+import CoreData
 struct ConfirmationView: View {
     let brand: String
     let model: String
