@@ -4,7 +4,7 @@
 //
 //  Created by Divyanshoo Sinha and Kashish Yadav on 2024-11-03.
 //
-//This is where user selects brand.
+//  This is where user selects brand.
 // Description: User can select model based on the selected brand
 
 import SwiftUI
@@ -45,8 +45,13 @@ struct ModelSelectionView: View {
             // Custom background color
             Color(UIColor(red: 191 / 255, green: 56 / 255, blue: 125 / 255, alpha: 1.0))
                 .edgesIgnoringSafeArea(.all)
+            
 
             VStack {
+                Text("Select a model")
+                    .font(.title2)
+                    .foregroundColor(.white)
+                    .padding(.bottom, 10)
                 // Form with limited height
                 Form {
                     Section(header: Text("Select Model")) {

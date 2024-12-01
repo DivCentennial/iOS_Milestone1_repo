@@ -3,7 +3,7 @@
 //  MAPD714-002_TeamProject_Team10
 //
 //  Created by Divyanshoo Sinha and Kashish Yadav on 2024-11-03.
-// User looks at the phone details and the inputted details in the end.
+// User looks at the phone details and the personal details at the end.
 //
 import SwiftUI
 
@@ -19,34 +19,34 @@ struct ConfirmationView: View {
    
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 50) {
             Text("Your phone order is successfully completed!🥳")
                 .font(.system(size: 17)) // Custom font size
-                .padding(.top, 80) // Adds 40 points of space at the top
+                .padding(.top, 10) // Adds 10 points of space at the top
                 .foregroundColor(.white) // White text color
 
             List {
                 Text("Brand: \(brand)")
-                    .padding(.vertical, 20) // Increase vertical padding
+                    .padding(.vertical, 10) // Increase vertical padding
                     .foregroundColor(.white)
                     .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))) //coloring rows
                 Text("Model: \(model)")
-                    .padding(.vertical, 20) // Increase vertical padding
+                    .padding(.vertical, 10) // Increase vertical padding
                     .foregroundColor(.white)
                     .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
                 
                 Text("Price: \(price)")
-                    .padding(.vertical, 20) // Increase vertical padding
+                    .padding(.vertical, 10) // Increase vertical padding
                     .foregroundColor(.white)
                     .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
                 
                 Text("Storage: \(storage)")
-                    .padding(.vertical, 20) // Increase vertical padding
+                    .padding(.vertical, 10) // Increase vertical padding
                     .foregroundColor(.white)
                     .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
                        
                 Text("Color: \(color)")
-                    .padding(.vertical, 20) // Increase vertical padding
+                    .padding(.vertical, 10) // Increase vertical padding
                     .foregroundColor(.white)
                     .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0)))
                       
@@ -68,7 +68,7 @@ struct ConfirmationView: View {
         }
         .padding()
         .background(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))) // Custom background color (#BF387D)
-        .edgesIgnoringSafeArea(.all) // Extend background to edges
+        //.edgesIgnoringSafeArea(.all) // Extend background to edges
     }
 }
 
@@ -84,7 +84,7 @@ struct ConfirmationView_Previews: PreviewProvider {
             color: "Blue",
             customerName: "John Doe",
             address: "123 Main Street",
-            city: "Toronto"
+            city: "Toronto, Canada"
             //postalCode: "M5H 2N2"
         )
         .previewDevice("iPhone 14") // You can specify the device here

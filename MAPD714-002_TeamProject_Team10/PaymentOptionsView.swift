@@ -5,13 +5,6 @@
 //  Created by Divyanshoo Sinha and Kashish Yadav on 2024-11-03.
 //  User can select the payment method.
 
-//
-//  PaymentOptionsView.swift
-//  MAPD714-002_TeamProject_Team10
-//
-//  Created by Divyanshoo Sinha and Kashish Yadav on 2024-11-03.
-//  User can select the payment method.
-
 import SwiftUI
 
 struct PaymentOptionsView: View {
@@ -23,7 +16,7 @@ struct PaymentOptionsView: View {
     @State private var showToast = false
     @State private var toastMessage = ""
     
-    // Parameters received from CustomerInfoView
+
     let brand: String
     let model: String
     let price: String

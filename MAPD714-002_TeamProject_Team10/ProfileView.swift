@@ -1,3 +1,13 @@
+//
+//  ProfileView.swift
+//  MAPD714-002_TeamProject_Team10
+//
+//  Created by Divyanshoo Sinha and Kashish Yadav on 2024-11-03.
+// Here,logged in user view and edit their profile before moving onto phone brand and mode selection.
+//
+
+
+
 import SwiftUI
 import CoreData
 
@@ -27,10 +37,15 @@ struct ProfileView: View {
 
                 VStack {
                     // Header: Profile title
-                    Text("")
-                        .font(.largeTitle)
+                    Text("Profile")
+                        .font(.title2)
                         .foregroundColor(.white)
-                        .padding(.bottom, 20)
+                        .padding(.bottom, 10)
+                    
+                    Text("To edit, please click inside the form field.")
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                        .padding(.bottom, 10)
 
                     // Editable profile information section
                     VStack(alignment: .leading, spacing: 15) {
@@ -39,35 +54,35 @@ struct ProfileView: View {
                             .padding()
                             .background(Color.white)
                             .cornerRadius(8)
-                            .padding(.bottom, 10)
+                            .padding(.bottom, 5)
 
                         Text("Email:")
                         TextField("Enter email", text: $email)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(8)
-                            .padding(.bottom, 10)
+                            .padding(.bottom, 5)
 
                         Text("Address:")
                         TextField("Enter address", text: $address)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(8)
-                            .padding(.bottom, 10)
+                            .padding(.bottom, 5)
 
                         Text("City & Country:")
                         TextField("Enter city & country", text: $cityCountry)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(8)
-                            .padding(.bottom, 10)
+                            .padding(.bottom, 5)
 
                         Text("Telephone:")
                         TextField("Enter telephone", text: $telephone)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(8)
-                            .padding(.bottom, 20)
+                            .padding(.bottom, 10)
                     }
                     .padding()
                     .background(Color.white.opacity(0.9)) // Semi-transparent white background
@@ -78,15 +93,15 @@ struct ProfileView: View {
                     Button(action: saveProfile) {
                         Text("Save Changes")
                             .frame(width: 200, height: 40)
-                            .background(primaryColor)
-                            .foregroundColor(.white)
+                            .background(Color.white)
+                            .foregroundColor(primaryColor)
                             .cornerRadius(8)
                             .padding(.top, 1)
                     }
 
                     // Button to navigate to the brand selection screen
                     NavigationLink(destination: BrandSelectionView(), isActive: $navigateToBrandSelection) {
-                        Text("Select Phone Brand")
+                        Text("Proceed")
                             .frame(width: 200, height: 40)
                             .background(Color.white)
                             .foregroundColor(primaryColor) // Sets text color to #BF387D
@@ -99,7 +114,7 @@ struct ProfileView: View {
                 .padding()
             }
             .onAppear(perform: fetchProfileDetails)
-            .navigationBarTitle("Profile", displayMode: .inline) // Navigation title
+           // .navigationBarTitle("Profile", displayMode: .inline) // Navigation title
             .navigationBarItems(leading: backButton) // Add back button
         }
     
@@ -161,5 +176,29 @@ struct ProfileView: View {
         } catch {
             print("Error saving profile: \(error)")
         }
+    }
+}
+
+struct ProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        let context = PersistenceController.preview.viewContext
+
+        // Create a mock AppUser in Core Data for the preview
+        let mockUser = AppUser(context: context)
+        mockUser.id = UUID()
+        mockUser.username = "mockuser@example.com"
+        mockUser.fullname = "John Doe"
+        mockUser.address = "123 Swift Lane"
+        mockUser.cityCountry = "Cupertino, CA"
+        mockUser.telephone = "+1 555-123-4567"
+
+        return NavigationView {
+            ProfileView(
+                loggedInUsername: .constant("mockuser@example.com"),
+                username: "mockuser@example.com"
+            )
+            .environment(\.managedObjectContext, context)
+        }
+        .previewDisplayName("Profile View Preview")
     }
 }

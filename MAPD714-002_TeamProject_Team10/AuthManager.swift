@@ -2,8 +2,9 @@
 //  AuthManager.swift
 //  MAPD714-002_TeamProject_Team10
 //
-//  Created by Kashish Yadav on 2024-11-26.
-//
+//  Created by Kashish Yadav and Divyanshoo Sinha on 2024-11-26.
+//Auth manager to keep track of the logged in user and display/update correct data.
+
 import Foundation
 import CoreData
 

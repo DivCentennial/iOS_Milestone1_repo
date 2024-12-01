@@ -4,8 +4,7 @@
 //
 //  Created by Kashish Yadav on 2024-10-31.
 // Description: Opening page of the app with brand logo and slogan
-//This acts like a bridge between loginview.swift and RegisterView.swift
-
+//This is essentially a parent view to Login and Profile Views now.
 
 import SwiftUI
 

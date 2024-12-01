@@ -1,8 +1,10 @@
 //  CheckoutView.swift
 //  MAPD714-002_TeamProject_Team10
-//Checkout screen where user's selection is displayed
+//  Checkout screen where user's selection is displayed
 //  Created by Divyanshoo Sinha and Kashish Yadav on 2024-11-03.
 // Description: User can see the selected phone brand, model & features
+
+
 import SwiftUI
 import CoreData
 
@@ -11,16 +13,34 @@ struct CheckoutView: View {
     var selectedPhone: Phone // The selected phone passed as a parameter
 
     var body: some View {
-        VStack(spacing: 15) {
+        VStack(spacing: 175) {
             // Display the selected phone details
             List {
-                Text("Brand: \(selectedPhone.phoneBrand ?? "N/A")")
+                Text("Brand: \(selectedPhone.phoneBrand ?? "N/A")") .padding(.vertical, 10) // Increase vertical padding
+                    .foregroundColor(.white)
+                    .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))) //coloring rows
                 Text("Model: \(selectedPhone.phoneModel ?? "N/A")")
+                    .padding(.vertical, 10) // Increase vertical padding
+                    .foregroundColor(.white)
+                    .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))) //coloring rows
                 Text("Price: \(selectedPhone.price ?? "N/A")")
+                    .padding(.vertical, 10) // Increase vertical padding
+                    .foregroundColor(.white)
+                    .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))) //coloring rows
                 Text("Storage: \(selectedPhone.storageCapacity ?? "N/A")")
+                    .padding(.vertical, 10) // Increase vertical padding
+                    .foregroundColor(.white)
+                    .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))) //coloring rows
                 Text("Color: \(selectedPhone.phoneColor ?? "N/A")")
+                    .padding(.vertical, 10) // Increase vertical padding
+                    .foregroundColor(.white)
+                    .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))) //coloring rows
                 Text("Carrier: \(selectedPhone.carrier ?? "N/A")")
+                    .padding(.vertical, 10) // Increase vertical padding
+                    .foregroundColor(.white)
+                    .listRowBackground(Color(UIColor(red: 191/255, green: 56/255, blue: 125/255, alpha: 1.0))) //coloring rows
             }
+            .padding(.top, 20)
             .onAppear {
                         print("selectedPhone in CheckoutView: \(selectedPhone)")
                     }

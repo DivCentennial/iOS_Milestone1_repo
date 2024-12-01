@@ -6,6 +6,8 @@ import CoreData
 
 struct RegisterView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.dismiss) private var dismiss  // Dismiss environment to go back
+
     @State private var fullName: String = ""
     @State private var address: String = ""
     @State private var cityCountry: String = ""
@@ -13,10 +15,11 @@ struct RegisterView: View {
     @State private var email: String = ""
     @State private var username: String = ""
     @State private var password: String = ""
-    @State private var confirmPassword: String = ""  // New state for confirm password
+    @State private var confirmPassword: String = ""
 
     @State private var showToast: Bool = false
     @State private var toastMessage: String = ""
+    @State private var toastColor: Color = .red
 
     var body: some View {
         ZStack {
@@ -27,13 +30,11 @@ struct RegisterView: View {
                 Image("cenphone_logo")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 250, height: 150)
-                    .padding(.top, 10)
+                    .frame(width: 250, height: 100)
 
                 Text("Register")
                     .font(.title3)
                     .foregroundColor(.white)
-                    .padding(.bottom, 10)
 
                 Group {
                     TextField("Full Name", text: $fullName)
@@ -42,7 +43,7 @@ struct RegisterView: View {
                     TextField("Telephone", text: $telephone)
                     TextField("Email", text: $username).autocapitalization(.none)
                     SecureField("Password", text: $password)
-                    SecureField("Confirm Password", text: $confirmPassword)  // Added Confirm Password field
+                    SecureField("Confirm Password", text: $confirmPassword)
                 }
                 .padding()
                 .background(Color.white.opacity(0.8))
@@ -64,14 +65,18 @@ struct RegisterView: View {
                     Text(toastMessage)
                         .font(.subheadline)
                         .padding()
-                        .background(Color.red)
+                        .background(toastColor)
                         .foregroundColor(.white)
                         .cornerRadius(8)
-                        .transition(.move(edge: .bottom))
+                        .transition(.opacity)
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                 withAnimation {
                                     showToast = false
+                                }
+
+                                if toastColor == .green {
+                                    dismiss()  // Navigate back if registration is successful
                                 }
                             }
                         }
@@ -85,21 +90,20 @@ struct RegisterView: View {
     private func handleRegister() {
         guard !fullName.isEmpty, !username.isEmpty, !password.isEmpty, !confirmPassword.isEmpty else {
             toastMessage = "Please fill in all required fields."
+            toastColor = .red
             showToast = true
             return
         }
 
-        // Check if the passwords match
         guard password == confirmPassword else {
             toastMessage = "Passwords do not match."
+            toastColor = .red
             showToast = true
             return
         }
 
-        // Use email as username if username is not provided
         let finalUsername = username.isEmpty ? email : username
 
-        // Save to Core Data
         let newUser = AppUser(context: viewContext)
         newUser.fullname = fullName
         newUser.address = address
@@ -111,9 +115,11 @@ struct RegisterView: View {
         do {
             try viewContext.save()
             toastMessage = "Registration successful!"
+            toastColor = .green
             showToast = true
         } catch {
             toastMessage = "Failed to register. Please try again."
+            toastColor = .red
             showToast = true
         }
     }
