@@ -2,15 +2,9 @@
 //  OrderHistoryView.swift
 //  MAPD714-002_TeamProject_Team10
 //
-//  Created by Divyanshoo Sinha on 2024-11-30.
+//  Created by Divyanshoo Sinha and Kashish Yadav on 2024-11-30.
 //
 
-//
-//  OrderHistoryView.swift
-//  MAPD714-002_TeamProject_Team10
-//
-//  Created by Divyanshoo Sinha on 2024-11-30.
-//
 import SwiftUI
 import CoreData
 

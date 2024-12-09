@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  MAPD714-002_TeamProject_Team10
 //
-//  Created by Kashish Yadav on 2024-10-31.
+//  Created by Kashish Yadav and Divyanshoo Sinha on 2024-10-31.
 // Description: Opening page of the app with brand logo and slogan
 //This is essentially a parent view to Login and Profile Views now.
 

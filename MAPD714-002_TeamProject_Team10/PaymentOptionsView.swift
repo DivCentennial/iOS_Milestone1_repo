@@ -15,6 +15,8 @@ struct PaymentOptionsView: View {
     @State private var expiryDate = ""
     @State private var showToast = false
     @State private var toastMessage = ""
+    @State private var cardHolderName = ""
+    @State private var cvv = ""
     
 
     let brand: String
@@ -60,7 +62,13 @@ struct PaymentOptionsView: View {
                             Text("Card Information")
                                 .foregroundColor(.white)
                                 .font(.headline)
-                            
+                            TextField("Card Holder Name", text: $cardHolderName)
+                                                           .accentColor(.white)
+                                                           .foregroundColor(.white)
+                                                           .autocapitalization(.words)
+                                                           .padding()
+                                                           .background(Color.white.opacity(0.2))
+                                                           .cornerRadius(8)
                             TextField("Card Number (16 Digit)", text: $cardNumber)
                                 .accentColor(.white)
                                 .foregroundColor(.white)
@@ -76,6 +84,13 @@ struct PaymentOptionsView: View {
                                 .padding()
                                 .background(Color.white.opacity(0.2))
                                 .cornerRadius(8)
+                            SecureField("CVV (3 Digit)", text: $cvv)
+                                                           .accentColor(.white)
+                                                           .foregroundColor(.white)
+                                                           .keyboardType(.numberPad)
+                                                           .padding()
+                                                           .background(Color.white.opacity(0.2))
+                                                           .cornerRadius(8)
                         }
                         .padding(.horizontal)
                     }
@@ -125,24 +140,28 @@ struct PaymentOptionsView: View {
     }
     
     private func validateAndProceed() {
-        if selectedPaymentMethod.isEmpty {
-            showToast(message: "Please select a payment method.")
-            return
-        }
-        
-        if (selectedPaymentMethod == "Credit Card" || selectedPaymentMethod == "Debit Card") {
-            if cardNumber.isEmpty || expiryDate.isEmpty {
-                showToast(message: "Please fill in all card details.")
-                return
-            }
-            if !isValidCardNumber(cardNumber) {
-                showToast(message: "Card number must be exactly 16 digits.")
-                return
-            }
-        }
-        
-        navigateToConfirmation = true // Trigger navigation
-    }
+           if selectedPaymentMethod.isEmpty {
+               showToast(message: "Please select a payment method.")
+               return
+           }
+           
+           if (selectedPaymentMethod == "Credit Card" || selectedPaymentMethod == "Debit Card") {
+               if cardNumber.isEmpty || expiryDate.isEmpty || cardHolderName.isEmpty || cvv.isEmpty {
+                   showToast(message: "Please fill in all card details.")
+                   return
+               }
+               if !isValidCardNumber(cardNumber) {
+                   showToast(message: "Card number must be exactly 16 digits.")
+                   return
+               }
+               if !isValidCVV(cvv) {
+                   showToast(message: "CVV must be exactly 3 digits.")
+                   return
+               }
+           }
+           
+           navigateToConfirmation = true // Trigger navigation
+       }
     
     private func showToast(message: String) {
         toastMessage = message
@@ -153,6 +172,11 @@ struct PaymentOptionsView: View {
         let digitsOnly = cardNumber.trimmingCharacters(in: .whitespacesAndNewlines)
         return digitsOnly.count == 16 && CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: digitsOnly))
     }
+    
+    private func isValidCVV(_ cvv: String) -> Bool {
+           let digitsOnly = cvv.trimmingCharacters(in: .whitespacesAndNewlines)
+           return digitsOnly.count == 3 && CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: digitsOnly))
+       }
 }
 
 // Toast Modifier
@@ -187,5 +211,22 @@ struct ToastModifier: ViewModifier {
 extension View {
     func toast(isShowing: Binding<Bool>, message: String) -> some View {
         self.modifier(ToastModifier(isShowing: isShowing, message: message))
+    }
+}
+struct PaymentOptionsView_Preview: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            PaymentOptionsView(
+                brand: "Samsung",
+                model: "Galaxy S22",
+                price: "$999",
+                storage: "128GB",
+                color: "Black",
+                customerName: "John Doe",
+                address: "123 Main Street",
+                city: "New York"
+            )
+            .environmentObject(AuthManager())
+        }
     }
 }
